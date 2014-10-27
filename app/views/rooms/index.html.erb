@@ -1,0 +1,9 @@
+<h2>Your Rooms</h2>
+
+<ul>
+  <% @rooms.each do |r| %>
+  <li>
+    <%= link_to "#{r.name}", room_path(r.id) %>
+  </li>
+  <% end %>
+ </ul>

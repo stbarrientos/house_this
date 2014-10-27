@@ -1,0 +1,35 @@
+<h2><%= @room.name %></h2>
+
+<h4>Roommates</h4>
+
+<ul>
+  <% @users.each do |u|  %>
+  <li><%= u.email %></li>
+  <% end %>
+</ul>
+
+<form>
+  <input placeholder="url" type="text" id="place_url">
+  <button id="import-data">Import</button>
+  <input placeholder="address" type="text" id="place_address">
+  <input placeholder="price" type="text" id="place_price">
+  <input placeholder="beds" type="text" id="place_beds">
+  <input placeholder="baths" type="text" id="place_baths">
+  <input placeholder="sqft" type="text" id="place_sqft">
+  <input placeholder="amenities" type="text" id="place_amenities">
+  <input type="submit">
+</form>
+
+<ul>
+  <% @places.each do |p| %>
+  <li>
+    <%= p.address %>
+    <ul class="hidden">
+      <li>Price: <%= p.price %> </li>
+      <li>Beds: <%= p.beds %></li>
+      <li>Baths: <%= p.baths %></li>
+      <li>Amenities: <%= p.amenities %></li>
+    </ul>
+  </li>
+  <% end %>
+</ul>
