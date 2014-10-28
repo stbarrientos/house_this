@@ -20,7 +20,7 @@ class PlacesController < ApplicationController
   def destroy
     @place = Place.find(params[:id])
     if @place.delete
-      render text: "Deleted"
+      render json: {message: "place deleted", status: 200}, status: 200
     else
       render json: @place
     end
