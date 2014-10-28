@@ -18,22 +18,44 @@ $(document).ready(function(){
     });  
   }); 
  
-  $("form").on("submit", function(event){
+  $("#new-place").on("submit", function(event){
     event.preventDefault();
+    var roomId = parseInt($(this).attr("data-id"));
     var url = $("#place_url").val();
     var address = $("#place_address").val();
-    var price = $("#place_price").val();
+    var price = $("#place_price").val().match(/\d/g).join("");
     var beds = $("#place_beds").val();
     var baths = $("#place_baths").val();
-    var sqft = $("#place_baths").val();
+    var sqft = $("#place_sqft").val().match(/\d/g).join("")
     var amenities = $("#place_amenities").val();
     $.ajax({
-      url: "/rooms",
+      url: "/rooms/" + roomId + "/places",
       method: "POST",
       dataType: "json",
       data: { place: { url: url, address: address, price: price, beds: beds, baths: baths, sqft: sqft, amenities: amenities }},
       success: function(response){
-        console.log(response);  
+        var htmlString = "<li>" + response.address + "<ul>" 
+        htmlString += "<li>Price: " + parseFloat(response.price) + "</li>";
+        htmlString += "<li>Beds: " + parseFloat(response.beds) + "</li>";
+        htmlString += "<li>Baths: " + parseFloat(response.baths) + "</li>";
+        htmlString += "<li>Sqft: " + parseFloat(response.sqft) + "</li>";
+        htmlString += "<li>Amenities: " + response.amenities + "</li></ul></li>"
+        $("#places-list").append(htmlString);  
+      }
+    });
+  });
+
+  $("button.delete").on("click", function(){
+    var placeId = parseInt($(this).attr("place-id"));
+    var roomId = parseInt($(this).attr("room-id"));
+    var target = $(this).parent().parent();
+    $.ajax({
+      url: "/rooms/" + roomId + "/places/" + placeId,
+      method: "DELETE",
+      dataType: "json",
+      success: function(response){
+        console.log(response);
+        target.remove();
       }
     });
   });

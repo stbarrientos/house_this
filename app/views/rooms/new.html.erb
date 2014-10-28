@@ -1,0 +1,11 @@
+<h2>Create A New Room</h2>
+
+<%= form_for @room, url: {action: "create"} do |r| %>
+<p>
+  <%= r.label "Name" %>
+  <%= r.text_field :name %>
+</p>
+<p>
+  <%= r.submit "GO!" %>
+</p>
+<% end %>

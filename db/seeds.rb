@@ -26,5 +26,5 @@ roommates = Roommate.create([
 ])
 
 places = Place.create([
-  {url: "http://www.zillow.com/homedetails/315-E-St-NE-Washington-DC-20002/414638_zpid/", rank: 1, address: "123 Sample Way", price: 3500, beds: 3, baths: 2, amenities: "Cable ready, wifi", room_id: rooms[0].id}
+  {url: "http://www.zillow.com/homedetails/315-E-St-NE-Washington-DC-20002/414638_zpid/", rank: 1, address: "123 Sample Way", price: 3500, beds: 3, baths: 2, sqft: 1235, amenities: "Cable ready, wifi", room_id: rooms[0].id}
 ])

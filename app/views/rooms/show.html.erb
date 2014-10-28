@@ -1,5 +1,11 @@
 <h2><%= @room.name %></h2>
-
+<button>
+  <% if current_user.rooms.length < 2 %>
+    <%= link_to "Add New Room", new_room_path %>
+  <% else %>
+    <%= link_to "Back to Rooms", rooms_path %>
+  <% end %>
+</button>
 <h4>Roommates</h4>
 
 <ul>
@@ -8,7 +14,7 @@
   <% end %>
 </ul>
 
-<form>
+<form data-id="<%= @room.id %>" id="new-place">
   <input placeholder="url" type="text" id="place_url">
   <button id="import-data">Import</button>
   <input placeholder="address" type="text" id="place_address">
@@ -20,14 +26,16 @@
   <input type="submit">
 </form>
 
-<ul>
+<ul id="places-list">
   <% @places.each do |p| %>
   <li>
     <%= p.address %>
+    <span><button class="delete" place-id="<%= p.id %>" room-id="<%= @room.id %>">X</button></span>
     <ul class="hidden">
       <li>Price: <%= p.price %> </li>
       <li>Beds: <%= p.beds %></li>
       <li>Baths: <%= p.baths %></li>
+      <li>Sqft: <%= p.sqft %></li>
       <li>Amenities: <%= p.amenities %></li>
     </ul>
   </li>
