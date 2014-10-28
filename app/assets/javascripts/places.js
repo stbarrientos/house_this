@@ -60,6 +60,6 @@ $(document).ready(function(){
     });
   });
 
-  $("#places-list").on("click","button.delete", deletePlace);
+  $("#places-list").on("click","button.delete-place", deletePlace);
 
 });

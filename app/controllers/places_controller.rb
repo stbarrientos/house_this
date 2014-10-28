@@ -13,7 +13,7 @@ class PlacesController < ApplicationController
     if @place.save
       render json: @place
     else
-      render text: "Something went wrong"
+      render json: {message: "Something went wrong", status: 500}, status: 500
     end
   end
 

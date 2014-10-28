@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   resources :rooms do
     resources :places
+    resources :roommates, only: [:create,:destroy]
   end
 
   root to: "rooms#index"

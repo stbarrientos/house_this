@@ -8,13 +8,24 @@
 </button>
 <h4>Roommates</h4>
 
-<ul>
+<div id="roommates-notifications"></div>
+
+<form room-id="<%= @room.id %>" id="new-roommate">
+  <label>Add Roommates</label>
+  <input type="text" placeholder="user's email" id="user_email">
+  <input type="submit">
+</form>
+
+<ul id="roommates-list">
   <% @users.each do |u|  %>
-  <li><%= u.email %></li>
+  <li><%= u[:email] %><span><button class="delete-roommate" roommate-id="<%= u[:roommate_id] %>" room-id="<%= @room.id %>">X</button></span></li>
   <% end %>
 </ul>
 
+<h4>Places</h4>
+
 <form data-id="<%= @room.id %>" id="new-place">
+  <label>Add A Place</label>
   <input placeholder="url" type="text" id="place_url">
   <button id="import-data">Import</button>
   <input placeholder="address" type="text" id="place_address">
@@ -30,7 +41,7 @@
   <% @places.each do |p| %>
   <li>
     <%= p.address %>
-    <span><button class="delete" place-id="<%= p.id %>" room-id="<%= @room.id %>">X</button></span>
+    <span><button class="delete-place" place-id="<%= p.id %>" room-id="<%= @room.id %>">X</button></span>
     <ul class="hidden">
       <li>Price: <%= p.price %> </li>
       <li>Beds: <%= p.beds %></li>
