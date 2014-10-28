@@ -1,5 +1,7 @@
 class RoommatesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
     @room = Room.find(params[:room_id])
     @roommate = Roommate.new(roommate_params)

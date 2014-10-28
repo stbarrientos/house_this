@@ -1,10 +1,4 @@
 <h2><%= @room.name %></h2>
-<button>
-  <%= link_to "Add New Room", new_room_path %>
-</button>
-  <% if current_user.rooms.length > 1 %>
-    <button><%= link_to "Back to Rooms", rooms_path %></button>
-  <% end %>
 <h4>Roommates</h4>
 
 <div id="roommates-notifications"></div>
@@ -41,13 +35,25 @@
   <li>
     <%= p.address %>
     <span><button class="delete-place" place-id="<%= p.id %>" room-id="<%= @room.id %>">X</button></span>
-    <ul class="hidden">
+    <p>Details</p>
+    <ul class="hidden details">
       <li>Price: <%= p.price %> </li>
       <li>Beds: <%= p.beds %></li>
       <li>Baths: <%= p.baths %></li>
       <li>Sqft: <%= p.sqft %></li>
       <li>Amenities: <%= p.amenities %></li>
     </ul>
+    <p>Comments</p>
+    <ul class="hidden comments">
+      <% p.comments.each do |c| %>
+      <li><%= c.body %> (from: <%= current_user.email %>)<span><button class="delete-comment" comment-id="<%= c.id %>">X</button></span></li>
+      <% end %>
+    </ul>
+    <form place-id="<%= p.id %>" class="new-comment">
+      <label>New Comment</label>
+      <input type="text" placeholder="comment" id="comment-body">
+      <input type="submit">
+    </form>
   </li>
   <% end %>
 </ul>

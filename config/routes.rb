@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :roommates, only: [:create,:destroy, :update]
   end
 
+  resources :comments, only: [:create, :destroy]
+
   root to: "rooms#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

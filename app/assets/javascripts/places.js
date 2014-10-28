@@ -60,6 +60,11 @@ $(document).ready(function(){
     });
   });
 
+  $("#expand-notifications").on("click", function(event){
+    event.preventDefault();
+    $(".user-notifications").toggleClass("hidden");  
+  });
+
   $("#places-list").on("click","button.delete-place", deletePlace);
 
 });

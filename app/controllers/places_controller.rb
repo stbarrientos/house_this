@@ -1,5 +1,7 @@
 class PlacesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def fetch_specs
     @place = Place.new
     specs = @place.get_specs(params[:file])

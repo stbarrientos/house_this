@@ -18,12 +18,12 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @notifications = current_user.roommates.where(accepted: false)
     @users = []
     @room.users.each do |u|
       @users << {roommate_id: u.roommates.find_by(room_id: @room.id, user_id: u.id).id, email: u.email}
     end
     @places = @room.places
-    @places_hash = []
   end
 
   def new
