@@ -1,11 +1,10 @@
 <h2><%= @room.name %></h2>
 <button>
-  <% if current_user.rooms.length < 2 %>
-    <%= link_to "Add New Room", new_room_path %>
-  <% else %>
-    <%= link_to "Back to Rooms", rooms_path %>
-  <% end %>
+  <%= link_to "Add New Room", new_room_path %>
 </button>
+  <% if current_user.rooms.length > 1 %>
+    <button><%= link_to "Back to Rooms", rooms_path %></button>
+  <% end %>
 <h4>Roommates</h4>
 
 <div id="roommates-notifications"></div>

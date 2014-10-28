@@ -20,6 +20,16 @@ class RoommatesController < ApplicationController
     end
   end
 
+  def update
+    @roommate = Roommate.find(params[:id])
+    @roommate.accepted = params[:accepted]
+    if @roommate.save
+      render json: @roommate
+    else
+      render json: {message: "Something Went Wrong", status: 500}, status: 500
+    end
+  end
+
   def destroy
     @roommate = Roommate.find(params[:id])
     if @roommate.delete

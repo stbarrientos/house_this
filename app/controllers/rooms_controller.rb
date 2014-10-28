@@ -3,9 +3,16 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @rooms = current_user.rooms
+    @rooms = current_user.roommates.where(accepted:true).map do |r|
+      Room.find(r.room_id)
+    end
+
     unless @rooms.length > 1
-      redirect_to room_path(@rooms.first.id)
+      if @rooms.length > 0
+        redirect_to room_path(@rooms.first.id)
+      else
+        redirect_to new_room_path
+      end
     end
   end
 
@@ -25,7 +32,7 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.create(room_params)
-    Roommate.create(user_id: current_user.id, room_id: @room.id)
+    Roommate.create(user_id: current_user.id, room_id: @room.id, accepted: true)
     if @room.save
       redirect_to room_path(@room.id)
     else

@@ -2,6 +2,7 @@ require 'open-uri'
 class Place < ActiveRecord::Base
 
   belongs_to :room
+  has_many :comments
 
   def get_specs(file)
     doc = Nokogiri::HTML(open("#{file}"))

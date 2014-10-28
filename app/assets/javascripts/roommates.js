@@ -34,4 +34,19 @@ $(document).ready(function(){
       }
     });
   });
+
+  $("div.user-notifications").on("click", "button.accept", function(event){
+    event.preventDefault();
+    var target = $(this).parent();
+    var roommateId = $(this).attr("roommate-id");
+    var roomId = $(this).attr("room-id");
+    $.ajax({
+      url: "/rooms/" + roomId + "/roommates/" + roommateId + "?accepted=1",
+      method: "PUT",
+      dataType: "json",
+      success: function(data){
+        target.remove();
+      }
+    });
+  });
 });
