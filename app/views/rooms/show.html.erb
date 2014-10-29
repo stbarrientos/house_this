@@ -33,31 +33,37 @@
   </form>
 
   <h2>Places</h2>
-
-  <ul id="places-list">
-    <% @places.each do |p| %>
-    <li>
-      <%= p.address %><a class="delete-place" place-id="<%= p.id %>" room-id="<%= @room.id %>">X</a>
-      <p>Details</p>
-      <ul class="hidden details">
-        <li>Price: <%= p.price %> </li>
-        <li>Beds: <%= p.beds %></li>
-        <li>Baths: <%= p.baths %></li>
-        <li>Sqft: <%= p.sqft %></li>
-        <li>Amenities: <%= p.amenities %></li>
+  
+  <div class="all-places">
+    <ul id="places-list">
+      <% @places.each do |p| %>
+      <li>
+        <%= p.address %><a class="delete-place" place-id="<%= p.id %>" room-id="<%= @room.id %>">X</a>
+        <p>Details<a target="ul.details" class="expand">(show)</a></p>
+        <ul class="hidden details">
+          <li>Price: <%= p.price %> </li>
+          <li>Beds: <%= p.beds %></li>
+          <li>Baths: <%= p.baths %></li>
+          <li>Sqft: <%= p.sqft %></li>
+          <li>Amenities: <%= p.amenities %></li>
+        </ul>
+        <p>Comments<a target="ul.comments" class="expand">(show)</a></p>
+        <ul class="hidden comments">
+          <% p.comments.each do |c| %>
+          <li><%= c.body %> (from: <%= current_user.email %>)<a class="delete-comment" comment-id="<%= c.id %>">X</a></li>
+          <% end %>
+        </ul>
+        <form place-id="<%= p.id %>" class="new-comment">
+          <label>New Comment</label>
+          <input type="text" placeholder="comment" id="comment-body">
+          <input type="submit">
+        </form>
+      </li>
+      <% end %>
+    </ul>
+    <div class="ranked-places">
+      <ul id="places-ranked">
       </ul>
-      <p>Comments</p>
-      <ul class="hidden comments">
-        <% p.comments.each do |c| %>
-        <li><%= c.body %> (from: <%= current_user.email %>)<span><button class="delete-comment" comment-id="<%= c.id %>">X</button></span></li>
-        <% end %>
-      </ul>
-      <form place-id="<%= p.id %>" class="new-comment">
-        <label>New Comment</label>
-        <input type="text" placeholder="comment" id="comment-body">
-        <input type="submit">
-      </form>
-    </li>
-    <% end %>
-  </ul>
+    </div>
+  </div>
 </div>

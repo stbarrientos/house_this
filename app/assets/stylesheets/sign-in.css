@@ -1,0 +1,22 @@
+.sign-in input{
+  margin-bottom: 20px;
+}
+
+.sign-in .form {
+  width: 40%;
+  float: left;
+}
+
+.sign-in .about {
+  width: 40%;
+  padding-left: 10%;
+  float: right;
+}
+
+.sign-in h4 {
+  font-size: 20px;
+}
+
+.footer {
+  clear: both;
+}

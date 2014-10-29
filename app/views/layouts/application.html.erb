@@ -8,12 +8,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if current_user %>
   <div class="navbar">
     <div class="logo">
       <h2>House This?</h2>
     </div>
     <ul>
+
+<% if current_user %>
       <li>
         <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %> 
       </li>
@@ -23,21 +24,30 @@
       <li>
         <%= link_to "Add New Room", new_room_path %>
       </li>
-      <% if current_user.rooms.length > 1 %>
+      <% if @user_rooms.length > 1 %>
         <li><%= link_to "Back to Rooms", rooms_path %></li>
       <% end %>
     </ul>
   </div>
   <div class="user-notifications hidden">
     <ul>
+      <% if @notifications %>
         <% @notifications.each do |r| %>
         <li>
           <%= Room.find(r.room_id).name %><button room-id="<%= r.room_id %>" roommate-id="<%= r.id %>" class="accept">Join</button>
         </li>
         <% end %>
+      <% else %>
+        <li>No Notifications</li>
+      <% end %>
     </ul>
-  </div>
+<% else %>
+    <li><%= link_to "Sign Up", new_user_registration_path %></li>
+    <li><%= link_to "Sign In", new_user_session_path %></li>
+    </ul>
 <% end %>
+  </div>
+
 <div class="content">
   <%= yield %>
 </div>

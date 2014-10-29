@@ -2,7 +2,7 @@ body {
   background-color: #DBDBDB;
   background: url("http://www.efficientlivinguk.com/wp-content/uploads/2013/10/photodune-4730723-technical-blueprint-l.jpg");
   background-size: cover;
-  background-position: center;
+  /*background-position: center;*/
   font-family: 'Istok Web', sans-serif;
 }
 
@@ -47,6 +47,7 @@ body {
 a {
   text-decoration: none;  
   color: white;
+  cursor: pointer;
 }
 
 .content {
@@ -54,7 +55,7 @@ a {
   width: 80%;
   margin-left: 10%;
   margin-top: 0;
-  background-color: rgba(181,179,179,0.8);
+  background-color: rgba(181,179,179,0.9);
 }
 
 .hidden {
