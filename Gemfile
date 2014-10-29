@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# For heroku
+gem 'rails_12factor', group: :production
 # Devise
 gem "devise"
 #rspec
