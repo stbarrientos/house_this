@@ -1,18 +1,38 @@
-<h2>Sign up</h2>
+<div class="sign-in">
+  <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <div class="form">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+    <div><%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+    <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
+      <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+    <div><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+    <div><%= f.submit "Sign up" %></div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+  </div>
+  <div class="about">
+    <h4>About Us</h4>
+    <p>
+      House This? lets you collaborate with potential roommates to find the perfect housing situation. It is geared toward a group of roommates actively looking for a place to live.
+    </p>
+    <p>
+      Users create rooms and then invite their roommates. In each room you can add places you've found. If you find a place on Zillow, you can copy the url over and we will autofill the data for you. If not, or if you would like to change the data we have found, you can do so easily with our forms.
+    </p>
+    <p>
+      User can also comment on places they have found directly on the site, allowing for easier communication and faster decisions.
+    </p>
+    <p>
+      You can sign up for free now and get started!
+    </p>
+  </div>
+</div>
+<div class="footer"></div>
