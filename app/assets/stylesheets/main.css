@@ -37,7 +37,7 @@ body {
 }
 
 .user-notifications {
-  clear: both
+  clear: both;
   margin: 0 0 0 0;
   padding: 20px;
   position: relative;
