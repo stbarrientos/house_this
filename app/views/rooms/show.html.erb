@@ -1,59 +1,63 @@
-<h2><%= @room.name %></h2>
-<h4>Roommates</h4>
+<div class="roommates-section">
+  <h2><%= @room.name %></h2>
+  <ul id="roommates-list">
+    <li>Roommates:</li>
+    <% @users.each do |u|  %>
+    <li><%= u[:email] %><a class="delete-roommate" roommate-id="<%= u[:roommate_id] %>" room-id="<%= @room.id %>">X</a></li>
+    <% end %>
+  </ul>
 
-<div id="roommates-notifications"></div>
+  <div id="roommates-notifications"></div>
 
-<form room-id="<%= @room.id %>" id="new-roommate">
-  <label>Add Roommates</label>
-  <input type="text" placeholder="user's email" id="user_email">
-  <input type="submit">
-</form>
+  <form room-id="<%= @room.id %>" id="new-roommate">
+    <label>Add More:</label>
+    <input type="text" placeholder="user's email" id="user_email">
+    <input type="submit">
+  </form>
 
-<ul id="roommates-list">
-  <% @users.each do |u|  %>
-  <li><%= u[:email] %><span><button class="delete-roommate" roommate-id="<%= u[:roommate_id] %>" room-id="<%= @room.id %>">X</button></span></li>
-  <% end %>
-</ul>
+</div>
 
-<h4>Places</h4>
+<div class="places-section">
 
-<form data-id="<%= @room.id %>" id="new-place">
-  <label>Add A Place</label>
-  <input placeholder="url" type="text" id="place_url">
-  <button id="import-data">Import</button>
-  <input placeholder="address" type="text" id="place_address">
-  <input placeholder="price" type="text" id="place_price">
-  <input placeholder="beds" type="text" id="place_beds">
-  <input placeholder="baths" type="text" id="place_baths">
-  <input placeholder="sqft" type="text" id="place_sqft">
-  <input placeholder="amenities" type="text" id="place_amenities">
-  <input type="submit">
-</form>
+  <form data-id="<%= @room.id %>" id="new-place">
+    <p>Add A Place:</p>
+    <input placeholder="url" type="text" id="place_url">
+    <button id="import-data">Autofill</button><br>
+    <input placeholder="address" type="text" id="place_address">
+    <input placeholder="price" type="text" id="place_price">
+    <input placeholder="beds" type="text" id="place_beds">
+    <input placeholder="baths" type="text" id="place_baths">
+    <input placeholder="sqft" type="text" id="place_sqft">
+    <input placeholder="amenities" type="text" id="place_amenities">
+    <input type="submit">
+  </form>
 
-<ul id="places-list">
-  <% @places.each do |p| %>
-  <li>
-    <%= p.address %>
-    <span><button class="delete-place" place-id="<%= p.id %>" room-id="<%= @room.id %>">X</button></span>
-    <p>Details</p>
-    <ul class="hidden details">
-      <li>Price: <%= p.price %> </li>
-      <li>Beds: <%= p.beds %></li>
-      <li>Baths: <%= p.baths %></li>
-      <li>Sqft: <%= p.sqft %></li>
-      <li>Amenities: <%= p.amenities %></li>
-    </ul>
-    <p>Comments</p>
-    <ul class="hidden comments">
-      <% p.comments.each do |c| %>
-      <li><%= c.body %> (from: <%= current_user.email %>)<span><button class="delete-comment" comment-id="<%= c.id %>">X</button></span></li>
-      <% end %>
-    </ul>
-    <form place-id="<%= p.id %>" class="new-comment">
-      <label>New Comment</label>
-      <input type="text" placeholder="comment" id="comment-body">
-      <input type="submit">
-    </form>
-  </li>
-  <% end %>
-</ul>
+  <h2>Places</h2>
+
+  <ul id="places-list">
+    <% @places.each do |p| %>
+    <li>
+      <%= p.address %><a class="delete-place" place-id="<%= p.id %>" room-id="<%= @room.id %>">X</a>
+      <p>Details</p>
+      <ul class="hidden details">
+        <li>Price: <%= p.price %> </li>
+        <li>Beds: <%= p.beds %></li>
+        <li>Baths: <%= p.baths %></li>
+        <li>Sqft: <%= p.sqft %></li>
+        <li>Amenities: <%= p.amenities %></li>
+      </ul>
+      <p>Comments</p>
+      <ul class="hidden comments">
+        <% p.comments.each do |c| %>
+        <li><%= c.body %> (from: <%= current_user.email %>)<span><button class="delete-comment" comment-id="<%= c.id %>">X</button></span></li>
+        <% end %>
+      </ul>
+      <form place-id="<%= p.id %>" class="new-comment">
+        <label>New Comment</label>
+        <input type="text" placeholder="comment" id="comment-body">
+        <input type="submit">
+      </form>
+    </li>
+    <% end %>
+  </ul>
+</div>

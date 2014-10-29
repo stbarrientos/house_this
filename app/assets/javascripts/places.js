@@ -3,7 +3,7 @@ $(document).ready(function(){
   function deletePlace(){
     var placeId = parseInt($(this).attr("place-id"));
     var roomId = parseInt($(this).attr("room-id"));
-    var target = $(this).parent().parent();
+    var target = $(this).parent();
     $.ajax({
       url: "/rooms/" + roomId + "/places/" + placeId,
       method: "DELETE",
@@ -48,13 +48,18 @@ $(document).ready(function(){
       dataType: "json",
       data: { place: { url: url, address: address, price: price, beds: beds, baths: baths, sqft: sqft, amenities: amenities }},
       success: function(response){
-        var htmlString = "<li>" + response.address + "<span><button class='delete' place-id='" + response.id + "' room-id='" + roomId + "'>X</button></span><ul class='hidden'>";
-
+        var htmlString = "<li>" + response.address + "<a class='delete-place' place-id='" + response.id + "' room-id='" + roomId + "'>X</a>";
+        htmlString += "<p>Details</p><ul class='hidden comments'";
         htmlString += "<li>Price: " + parseFloat(response.price) + "</li>";
         htmlString += "<li>Beds: " + parseFloat(response.beds) + "</li>";
         htmlString += "<li>Baths: " + parseFloat(response.baths) + "</li>";
         htmlString += "<li>Sqft: " + parseFloat(response.sqft) + "</li>";
-        htmlString += "<li>Amenities: " + response.amenities + "</li></ul></li>"
+        htmlString += "<li>Amenities: " + response.amenities + "</li></ul>";
+        htmlString += "<p>Comments</p><ul></ul>";
+        htmlString += "<form place-id='" + response.id + "' class='new-comment'>";
+        htmlString += "<label>New Comment</label>";
+        htmlString += "<input type='text' placeholder='comment' id='comment-body'>";
+        htmlString += "<input type='submit'></li>"; 
         $("#places-list").append(htmlString);
       }
     });
@@ -65,6 +70,6 @@ $(document).ready(function(){
     $(".user-notifications").toggleClass("hidden");  
   });
 
-  $("#places-list").on("click","button.delete-place", deletePlace);
+  $("#places-list").on("click","a.delete-place", deletePlace);
 
 });

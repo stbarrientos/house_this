@@ -1,0 +1,78 @@
+.content h2 {
+  text-align: center;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.roommates-section form {
+  padding-bottom: 10px;
+  border-bottom: 3px solid rgb(43,43,43);
+}
+
+input[type=text] {
+  background-color: rgba(181,179,179,0);
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 0 10px 20px 10px;
+}
+
+input[type=submit]{
+  border-radius: 5px;
+}
+
+::-webkit-input-placeholder {
+   color: rgb(71,71,71);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: rgb(71,71,71);
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: rgb(71,71,71);
+}
+
+:-ms-input-placeholder {  
+   color: rgb(71,71,71);
+}
+
+#roommates-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+#roommates-list li {
+  display: inline-block;
+  font-size: 20px;
+}
+
+#roommates-notifications {
+  padding-left: 10px;
+  background-color: rgba(210,46,46,1);
+}
+
+#roommates-list a {
+  margin-left: 5px;
+}
+
+#places-list a {
+  margin-left: 5px;
+}
+
+#new-place {
+  padding-bottom: 15px;
+  border-bottom: 3px solid rgb(43,43,43);
+}
+
+.content a {
+  color: rgba(146,22,0,0.8);
+  text-decoration: none;
+}
+
+.content button {
+  border-radius: 5px;
+}
+
+.user-notifications button {
+  margin-left: 10px
+}

@@ -14,15 +14,15 @@ $(document).ready(function(){
           $("#roommates-notifications").html(data.message);
         } else {
           $("#roommates-notifications").html("");
-          var htmlString = "<li>" + data.email + "<span><button class='delete-roommate' roommate-id='" + data.roommate_id + "' room-id='" + data.room_id + "'>X</button></span></li>";
+          var htmlString = "<li>" + data.email + "<a class='delete-roommate' roommate-id='" + data.roommate_id + "' room-id='" + data.room_id + "'>X</a></li>";
           $("#roommates-list").append(htmlString);
         }
       }
     });
   }); 
 
-  $("#roommates-list").on("click", "button.delete-roommate", function(){
-    var target = $(this).parent().parent();
+  $("#roommates-list").on("click", "a.delete-roommate", function(){
+    var target = $(this).parent();
     var roommateId = $(this).attr("roommate-id");
     var roomId = $(this).attr("room-id");
     $.ajax({
