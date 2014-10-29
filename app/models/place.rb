@@ -4,6 +4,9 @@ class Place < ActiveRecord::Base
   belongs_to :room
   has_many :comments
 
+  validates :room_id, presence: true
+  validates :address, presence: true
+
   def get_specs(file)
     doc = Nokogiri::HTML(open("#{file}"))
     price = doc.css("div.main-row.home-summary-row span").text

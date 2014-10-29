@@ -5,7 +5,9 @@ gem 'rails_12factor', group: :production
 # Devise
 gem "devise"
 #rspec
-gem 'rspec'
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+end
 # Nokogiri
 gem "nokogiri"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
