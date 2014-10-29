@@ -76,3 +76,7 @@ input[type=submit]{
 .user-notifications button {
   margin-left: 10px
 }
+
+#places-list p {
+  display: inline-block;
+}

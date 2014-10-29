@@ -40,6 +40,7 @@
       <li>
         <%= p.address %><a class="delete-place" place-id="<%= p.id %>" room-id="<%= @room.id %>">X</a>
         <p>Details<a target="ul.details" class="expand">(show)</a></p>
+        <p>Comments<a target="ul.comments" class="expand" place-id="<%= p.id %>">(show)</a></p>
         <ul class="hidden details">
           <li>Price: <%= p.price %> </li>
           <li>Beds: <%= p.beds %></li>
@@ -47,13 +48,12 @@
           <li>Sqft: <%= p.sqft %></li>
           <li>Amenities: <%= p.amenities %></li>
         </ul>
-        <p>Comments<a target="ul.comments" class="expand">(show)</a></p>
         <ul class="hidden comments">
           <% p.comments.each do |c| %>
           <li><%= c.body %> (from: <%= current_user.email %>)<a class="delete-comment" comment-id="<%= c.id %>">X</a></li>
           <% end %>
         </ul>
-        <form place-id="<%= p.id %>" class="new-comment">
+        <form place-id="<%= p.id %>" class="new-comment hidden">
           <label>New Comment</label>
           <input type="text" placeholder="comment" id="comment-body">
           <input type="submit">

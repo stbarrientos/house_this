@@ -14,6 +14,8 @@ $(document).ready(function(){
     });
   };
 
+  $("#places-list").on("click","a.delete-place", deletePlace);
+
   $("#import-data").on("click", function(event){
     event.preventDefault();
     var url = $("#place_url").val();
@@ -70,6 +72,5 @@ $(document).ready(function(){
     $(".user-notifications").toggleClass("hidden");  
   });
 
-  $("#places-list").on("click","a.delete-place", deletePlace);
 
 });

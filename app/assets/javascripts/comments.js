@@ -19,12 +19,14 @@ $(document).ready(function(){
  $("ul#places-list").on("click", "a.expand", function(){
    event.preventDefault();
    var target = $($(this).attr("target"));
+   var placeId = $(this).attr("place-id");
    if ( target.hasClass("hidden")){
      $(this).text("(hide)");
    } else {
      $(this).text("(show)");
    }
    target.toggleClass("hidden");
+   $("form[place-id='"+placeId+"']").toggleClass("hidden");
  });
 
   $("ul.comments").on("click", "a.delete-comment", function(event){
