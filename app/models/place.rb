@@ -6,6 +6,7 @@ class Place < ActiveRecord::Base
 
   validates :room_id, presence: true
   validates :address, presence: true
+  validates :url, presence: true
 
   def get_specs(file)
     doc = Nokogiri::HTML(open("#{file}"))

@@ -6,9 +6,9 @@ RSpec.describe Place, :type => :model do
     @place = Place.new(address: "123 Test Way", url: "google.com", room_id: 1, rank: 1, price: 1234, beds: 3, baths: 3, sqft: 2000, amenities: "Wifi")
   end
 
-  it "is valid without a url" do
+  it "is not valid without a url" do
     @place.url = nil
-    expect(@place).to be_valid
+    expect(@place).to_not be_valid
   end
 
   it "is not valid without a room_id" do

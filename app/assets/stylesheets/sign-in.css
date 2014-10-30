@@ -20,3 +20,13 @@
 .footer {
   clear: both;
 }
+
+.new-room {
+  width: 40%;
+  float: left;
+}
+
+.about-new-room {
+  width: 40%;
+  float: right;
+}

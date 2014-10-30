@@ -1,11 +1,21 @@
 <h2>Create A New Room</h2>
 
-<%= form_for @room, url: {action: "create"} do |r| %>
-<p>
-  <%= r.label "Name" %>
-  <%= r.text_field :name %>
-</p>
-<p>
-  <%= r.submit "GO!" %>
-</p>
-<% end %>
+<div class="new-room">
+  <%= form_for @room, url: {action: "create"} do |r| %>
+  <p>
+    <%= r.label "Name" %>
+    <%= r.text_field :name %>
+    <%= r.submit "GO!" %>
+  </p>
+  <% end %>
+</div>
+<div class="about-new-room">
+  <h4>What Is A Room?</h4>
+  <p>
+    The room is the platform from which you will be conducting and keeping track of your searches. Once you create a room, you can invite your roommates to join, and then you can collaborate to create a list of potential places to live.
+  </p>
+  <p>
+    To create a room simply type a name into the name field to the left of this text. No one will be able to view your room except for your roommates, and you can add and remove roommates as you please.
+  </p>
+</div>
+<div class="footer"></div>
