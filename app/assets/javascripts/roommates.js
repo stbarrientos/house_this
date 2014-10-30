@@ -10,6 +10,7 @@ $(document).ready(function(){
       dataType: "json",
       data: {roommate: { room_id: roomId } },
       success: function(data){
+        $("#user_email").val("");
         if (data.status === 203){
           $("#roommates-notifications").html(data.message);
         } else {
@@ -46,6 +47,9 @@ $(document).ready(function(){
       dataType: "json",
       success: function(data){
         target.remove();
+        if ($("li.has-rooms").length < 1){
+          $("div.navbar ul").eq(0).append("<li><a href='/rooms/'>Back To Rooms</a></li>");
+        }
       }
     });
   });

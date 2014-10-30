@@ -74,6 +74,4 @@ $(document).ready(function(){
     event.preventDefault();
     $(".user-notifications").toggleClass("hidden");  
   });
-
-
 });

@@ -25,13 +25,13 @@
         <%= link_to "Add New Room", new_room_path %>
       </li>
       <% if @user_rooms.length > 1 %>
-        <li><%= link_to "Back to Rooms", rooms_path %></li>
+        <li class="has-rooms"><%= link_to "Back to Rooms", rooms_path %></li>
       <% end %>
     </ul>
   </div>
   <div class="user-notifications hidden">
     <ul>
-      <% if @notifications %>
+      <% if @notifications.length > 0 %>
         <% @notifications.each do |r| %>
         <li>
           <%= Room.find(r.room_id).name %><button room-id="<%= r.room_id %>" roommate-id="<%= r.id %>" class="accept">Join</button>

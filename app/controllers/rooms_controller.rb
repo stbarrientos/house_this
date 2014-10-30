@@ -4,6 +4,7 @@ class RoomsController < ApplicationController
   before_action :get_rooms
 
   def index
+    @notifications = current_user.roommates.where(accepted: false)
     @rooms = current_user.roommates.where(accepted:true).map do |r|
       Room.find(r.room_id)
     end
