@@ -39,23 +39,23 @@
       <% @places.each do |p| %>
       <li>
         <%= p.address %><a class="delete-place" place-id="<%= p.id %>" room-id="<%= @room.id %>">X</a>
-        <p>Details<a target="ul.details" class="expand">(show)</a></p>
-        <p>Comments<a target="ul.comments" class="expand" place-id="<%= p.id %>">(show)</a></p>
-        <ul class="hidden details">
+        <p>Details<a target="ul.details[place-id='<%= p.id %>']" class="expand">(show)</a></p>
+        <p>Comments<a target="ul.comments[place-id='<%= p.id %>" class="expand" place-id="<%= p.id %>">(show)</a></p>
+        <ul class="hidden details" place-id="<%= p.id %>">
           <li>Price: <%= p.price %> </li>
           <li>Beds: <%= p.beds %></li>
           <li>Baths: <%= p.baths %></li>
           <li>Sqft: <%= p.sqft %></li>
           <li>Amenities: <%= p.amenities %></li>
         </ul>
-        <ul class="hidden comments">
+        <ul class="hidden comments" place-id="<%= p.id %>">
           <% p.comments.each do |c| %>
           <li><%= c.body %> (from: <%= current_user.email %>)<a class="delete-comment" comment-id="<%= c.id %>">X</a></li>
           <% end %>
         </ul>
         <form place-id="<%= p.id %>" class="new-comment hidden">
           <label>New Comment</label>
-          <input type="text" placeholder="comment" id="comment-body">
+          <input type="text" placeholder="comment" place-id="<%= p.id %>" class="comment-body">
           <input type="submit">
         </form>
       </li>

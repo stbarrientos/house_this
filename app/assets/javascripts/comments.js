@@ -3,15 +3,16 @@ $(document).ready(function(){
   $("form.new-comment").on("submit", function(event){
     event.preventDefault();
     var placeId = $(this).attr("place-id");
-    var body = $("#comment-body").val();
+    var target =  $(".comment-body[place-id='" + placeId +"'")
+    var body = target.val();
     $.ajax({
       url: "/comments?place_id=" + placeId,
       method: "POST",
       dataType: "json",
       data: {comment: {body: body}},
       success: function(data){
-        $("ul.comments").append("<li>" + data.body + " (from: " + data.email + ")<a class='delete-comment' comment-id='" + data.id + "'>X</a></li>");
-        $("#comment-body").val("");
+        $("ul.comments[place-id='" + placeId + "']").append("<li>" + data.body + " (from: " + data.email + ")<a class='delete-comment' comment-id='" + data.id + "'>X</a></li>");
+        target.val("");
       }
     });
   });  

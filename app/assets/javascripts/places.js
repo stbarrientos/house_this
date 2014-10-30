@@ -51,17 +51,19 @@ $(document).ready(function(){
       data: { place: { url: url, address: address, price: price, beds: beds, baths: baths, sqft: sqft, amenities: amenities }},
       success: function(response){
         var htmlString = "<li>" + response.address + "<a class='delete-place' place-id='" + response.id + "' room-id='" + roomId + "'>X</a>";
-        htmlString += "<p>Details</p><ul class='hidden comments'";
+        htmlString += "<p>Details<a target='ul.details' place-id='" + response.id + "' room-id='" + roomId + "'>(show)</a></p>";
+        htmlString += "<p>Comments<a target='ul.comments' class='expand' place-id='" + response.id + "'>(show)</a></p>"
+        htmlString += "<ul class='hidden comments'"
         htmlString += "<li>Price: " + parseFloat(response.price) + "</li>";
         htmlString += "<li>Beds: " + parseFloat(response.beds) + "</li>";
         htmlString += "<li>Baths: " + parseFloat(response.baths) + "</li>";
         htmlString += "<li>Sqft: " + parseFloat(response.sqft) + "</li>";
         htmlString += "<li>Amenities: " + response.amenities + "</li></ul>";
-        htmlString += "<p>Comments</p><ul></ul>";
+        htmlString += "</ul>";
         htmlString += "<form place-id='" + response.id + "' class='new-comment'>";
         htmlString += "<label>New Comment</label>";
         htmlString += "<input type='text' placeholder='comment' id='comment-body'>";
-        htmlString += "<input type='submit'></li>"; 
+        htmlString += "<input type='submit'></form></li></ul>"; 
         $("#places-list").append(htmlString);
       }
     });

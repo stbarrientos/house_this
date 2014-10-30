@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     if @comment.save
       render json: {body: @comment.body, id: @comment.id, email: current_user.email, status: 200}, status: 200
     else
-      render json: {message: "Something Went Wrong", status: 500}, status: 500
+      render json: {message: @comment.errors, status: 500}, status: 500
     end
   end
 
