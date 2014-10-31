@@ -60,10 +60,10 @@ $(document).ready(function(){
         htmlString += "<li>Sqft: " + parseFloat(response.sqft) + "</li>";
         htmlString += "<li>Amenities: " + response.amenities + "</li>";
         htmlString += "<li><a href='" + response.url + "'>Source</a></li></ul>";
-        htmlString += "<ul place-id='" + response.id +"' class='hidden comments'>";
-        htmlString += "<form place-id='" + response.id + "' class='new-comment'>";
+        htmlString += "<ul place-id='" + response.id +"' class='hidden comments'></ul>";
+        htmlString += "<form place-id='" + response.id + "' class='new-comment hidden'>";
         htmlString += "<label>New Comment</label>";
-        htmlString += "<input type='text' placeholder='comment' id='comment-body'>";
+        htmlString += "<input type='text' placeholder='comment' class='comment-body' place-id='" + response.id + "'>";
         htmlString += "<input type='submit'></form></li></ul>"; 
         $("#places-list").append(htmlString);
       }

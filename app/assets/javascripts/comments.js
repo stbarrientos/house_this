@@ -1,6 +1,6 @@
 $(document).ready(function(){
   
-  $("form.new-comment").on("submit", function(event){
+  $("#places-list").on("submit","form.new-comment", function(event){
     event.preventDefault();
     var placeId = $(this).attr("place-id");
     var target =  $(".comment-body[place-id='" + placeId +"'")
