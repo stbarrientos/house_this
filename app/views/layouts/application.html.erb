@@ -31,7 +31,7 @@
   </div>
   <div class="user-notifications hidden">
     <ul>
-      <% if @notifications.length > 0 %>
+      <% if @notifications && @notifications.length > 0 %>
         <% @notifications.each do |r| %>
         <li>
           <%= Room.find(r.room_id).name %><button room-id="<%= r.room_id %>" roommate-id="<%= r.id %>" class="accept">Join</button>
