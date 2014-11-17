@@ -17,7 +17,7 @@ $(document).ready(function(){
     });
   });  
   
- $("ul#places-list").on("click", "a.expand", function(){
+ $("ul#places-list").on("click", "a.expand", function(event){
    event.preventDefault();
    var target = $($(this).attr("target"));
    var placeId = $(this).attr("place-id");
@@ -30,7 +30,7 @@ $(document).ready(function(){
    $("form[place-id='"+placeId+"']").toggleClass("hidden");
  });
 
-  $("ul.comments").on("click", "a.delete-comment", function(event){
+  $("#places-list").on("click", "a.delete-comment", function(event){
     event.preventDefault();
     self = $(this)
     var commentId = $(this).attr("comment-id");

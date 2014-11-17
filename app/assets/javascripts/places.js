@@ -66,6 +66,13 @@ $(document).ready(function(){
         htmlString += "<input type='text' placeholder='comment' class='comment-body' place-id='" + response.id + "'>";
         htmlString += "<input type='submit'></form></li></ul>"; 
         $("#places-list").append(htmlString);
+        $("#place_url").val("");
+        $("#place_address").val("");
+        $("#place_price").val("");
+        $("#place_beds").val("");
+        $("#place_baths").val("");
+        $("#place_sqft").val("");
+        $("#place_amenities").val("");
       }
     });
   });
