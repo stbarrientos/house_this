@@ -80,4 +80,9 @@ input[type=submit]{
 
 #places-list p {
   display: inline-block;
+  padding: 0 5px 0 5px;
+}
+
+.new-comment {
+  margin-top: 20px;
 }

@@ -21,13 +21,20 @@
 
   <form data-id="<%= @room.id %>" id="new-place">
     <p>Add A Place:</p>
+    <label>URL:</label>
     <input placeholder="url" type="text" id="place_url">
     <button id="import-data">Autofill</button><br>
+    <label>Address:</label>
     <input placeholder="address" type="text" id="place_address">
+    <label>Price:</label>
     <input placeholder="price" type="text" id="place_price">
+    <label>Beds:</label>
     <input placeholder="beds" type="text" id="place_beds">
+    <label>Baths:</label>
     <input placeholder="baths" type="text" id="place_baths">
+    <label>SQFT:</label>
     <input placeholder="sqft" type="text" id="place_sqft">
+    <label>Amenities:</label>
     <input placeholder="amenities" type="text" id="place_amenities">
     <input type="submit">
   </form>

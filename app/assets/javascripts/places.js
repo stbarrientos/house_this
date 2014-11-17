@@ -51,7 +51,7 @@ $(document).ready(function(){
       data: { place: { url: url, address: address, price: price, beds: beds, baths: baths, sqft: sqft, amenities: amenities }},
       success: function(response){
         var htmlString = "<li>" + response.address + "<a class='delete-place' place-id='" + response.id + "' room-id='" + roomId + "'>X</a>";
-        htmlString += "<p>Details<a target='ul.details[place-id=\"" + response.id + "\"]' place-id='" + response.id + "' class='expand'>(show)</a></p>";
+        htmlString += "<p>Details<a target='ul.details[place-id=\"" + response.id + "\"]' class='expand'>(show)</a></p>";
         htmlString += "<p>Comments<a target='ul.comments[place-id=\"" + response.id + "\"]' class='expand' place-id='" + response.id + "'>(show)</a></p>"
         htmlString += "<ul place-id='" + response.id + "' class='hidden details'>"
         htmlString += "<li>Price: " + parseFloat(response.price) + "</li>";
